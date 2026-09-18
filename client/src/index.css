@@ -1,0 +1,280 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --color-primary:        #C15F3C;
+  --color-primary-hover:  #A8512F;
+  --color-primary-light:  rgba(193, 95, 60, 0.10);
+  --color-primary-ring:   rgba(193, 95, 60, 0.30);
+
+  /* Surfaces */
+  --color-bg:             #FAF9F5;
+  --color-surface:        #FFFFFF;
+  --color-surface-alt:    #F4F3EE;
+  --color-surface-hover:  #F0EEE8;
+
+  /* Typography */
+  --color-text:           #1F1E1D;
+  --color-text-secondary: #6B6762;
+  --color-text-muted:     #B1ADA1;
+
+  /* Borders */
+  --color-border:         #E5E2DA;
+  --color-border-subtle:  #EFEDE7;
+
+  /* Semantic */
+  --color-success:        #2D8A4E;
+  --color-success-light:  rgba(45, 138, 78, 0.10);
+  --color-danger:         #C0392B;
+  --color-danger-light:   rgba(192, 57, 43, 0.10);
+
+  /* Typography scale */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    font-weight: 400;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) var(--color-bg);
+  }
+}
+
+/* ─── Component Utilities ────────────────────────────────────────────────── */
+@layer components {
+
+  /* Main card surface */
+  .card-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(31, 30, 29, 0.04), 0 1px 2px rgba(31, 30, 29, 0.03);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card-panel:hover {
+    box-shadow: 0 4px 12px rgba(31, 30, 29, 0.08);
+  }
+
+  /* Legacy alias – keep old class working in case anything still uses it */
+  .glass-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(31, 30, 29, 0.04);
+  }
+
+  /* Primary button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-hover);
+    box-shadow: 0 4px 12px rgba(193, 95, 60, 0.20);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-text-muted);
+  }
+
+  /* Input base */
+  .input-base {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-size: 14px;
+    font-family: var(--font-sans);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    outline: none;
+  }
+
+  .input-base::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .input-base:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-ring);
+    background: var(--color-surface);
+  }
+
+  /* Badge success */
+  .badge-success {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--color-success-light);
+    color: var(--color-success);
+    border: 1px solid rgba(45, 138, 78, 0.20);
+  }
+
+  /* Badge danger */
+  .badge-danger {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--color-danger-light);
+    color: var(--color-danger);
+    border: 1px solid rgba(192, 57, 43, 0.20);
+  }
+
+  /* Nav link */
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    background: var(--color-surface-alt);
+    color: var(--color-text);
+  }
+
+  .nav-link.active {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-wrapper::after {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0,
+    rgba(255,255,255,0.5) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+  content: '';
+}
