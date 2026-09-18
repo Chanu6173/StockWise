@@ -5,6 +5,7 @@ StockWise is a production-grade full-stack MERN (MongoDB, Express.js, React, Nod
 The application serves as a high-fidelity tracking, auditing, and analytics platform. It automatically updates investment values, calculates profits/losses, visualizes portfolio allocations, and keeps logs of all execution transactions.
 
 ---
+<img width="1915" height="907" alt="Screenshot 2026-09-18 222137" src="https://github.com/user-attachments/assets/6e60fb2b-032d-4fa8-a3c0-188944f973c0" />
 
 ## 🌟 Core Features
 
@@ -20,6 +21,7 @@ The application serves as a high-fidelity tracking, auditing, and analytics plat
 - **Debounced Autocomplete Search**: Global header input that debounces key presses to perform stock searches via API and routes to detailed profiles.
 - **Interactive Stock Details**: Inspect key statistics (Open, Prev Close, Day High/Low, Market Cap) and toggle historical price timelines (1W, 1M, 3M, 1Y).
 - **Automated DB Fallback**: If MongoDB Atlas cannot connect (e.g. due to DNS failures), the server automatically spins up a local in-memory database server for zero-configuration testing.
+<img width="1919" height="883" alt="Screenshot 2026-09-18 222247" src="https://github.com/user-attachments/assets/d3712c57-7736-4b8c-a3f7-85b767514fc6" />
 
 ---
 
@@ -168,9 +170,11 @@ All requests route through the base URI: `http://localhost:5000/api`
 - `GET /api/watchlist` — Retrieve tracked stocks with quotes (Protected).
 - `POST /api/watchlist` — Add stock symbol to watchlist (Protected).
 - `DELETE /api/watchlist/:id` — Remove ticker from watchlist (Protected).
+<img width="1919" height="877" alt="Screenshot 2026-09-18 222218" src="https://github.com/user-attachments/assets/28d38cc6-3a8d-455d-a5ac-f22fc189a648" />
 
 ### 4. Transactions
 - `GET /api/transactions` — Fetch paginated order journals with filter and sort options (Protected).
+<img width="1910" height="900" alt="Screenshot 2026-09-18 222234" src="https://github.com/user-attachments/assets/13418716-4096-403d-a7c2-6c75d9f6ec42" />
 
 ### 5. Stocks Reference
 - `GET /api/stocks/search?q=` — Query tickers by keyword (Protected).
@@ -179,3 +183,4 @@ All requests route through the base URI: `http://localhost:5000/api`
 ### 6. Dashboard & Analytics
 - `GET /api/dashboard` — Aggregates valuation summaries and charts series (Protected).
 - `GET /api/analytics` — Audits holdings to identify top performers and sector allocations (Protected).
+<img width="1919" height="888" alt="Screenshot 2026-09-18 222150" src="https://github.com/user-attachments/assets/7e03e932-287f-432d-90ce-8537b281fb84" />
